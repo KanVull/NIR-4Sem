@@ -1,6 +1,7 @@
 import os
 import cv2
 import numpy as np
+from sklearn.cluster import KMeans
 
 level = 7
 size = (600, 600)
@@ -28,11 +29,16 @@ for i in range(1,level):
     ls_ = cv2.pyrUp(ls_)
     ls_ = cv2.add(ls_, lpImg[i])
 
-ls_ = cv2.resize(ls_, size)
-cv2.imshow('imgL', ls_)
+img = cv2.resize(ls_, size)
+# cv2.imshow('imgL', img)
 
 #k-avarage
 #4 layers
+img_r = (img / 255.0).reshape(-1,3)
+k_colors = KMeans(n_clusters=4).fit(img_r)
+img1 = k_colors.cluster_centers_[k_colors.labels_]
+img1 = np.reshape(img1, (img.shape))
 
+cv2.imshow('k', img1)
 
 cv2.waitKey(0)

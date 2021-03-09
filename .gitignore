@@ -1,4 +1,2 @@
-Lib/
-Scripts/
+Env/
 .vscode/
-*.cfg
