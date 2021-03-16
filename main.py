@@ -41,7 +41,6 @@ path = 'Pics/'
 
 for imageName in pathlib.Path(path).iterdir():
     if imageName.is_file():
-        # image = cv2.imread( str(imageName.resolve()).replace('\\', '/'), 0)
         image = cv2.imread( str(imageName), 0)
         os.chdir('Pics/Mod/')
         PyrImage = GetPyrImg(image)
