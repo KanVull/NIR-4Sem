@@ -26,7 +26,7 @@ def GetPyrImg(image):
     for i in range(1,level):
         ls_ = cv2.pyrUp(ls_)
         ls_ = cv2.add(ls_, lpImg[i])
-
+        
     img = cv2.resize(ls_, size)
     return img
 
